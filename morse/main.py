@@ -2,7 +2,7 @@ from machine import Pin
 import utime
 led = Pin(25, Pin.OUT)
 
-morseCode={' ': ' ', 'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.', 'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---', 'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---', 'p': '.--.', 'q': '--.-', 'r': '.-.', 's': '...', 't': '-', 'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 'y': '-.--', 'z': '--..'}
+morseCode={' ': '/', 'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.', 'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---', 'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---', 'p': '.--.', 'q': '--.-', 'r': '.-.', 's': '...', 't': '-', 'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 'y': '-.--', 'z': '--..'}
 
 def flash(on,off):
     led.high()
@@ -17,14 +17,14 @@ def flashMorse(morseMsg):
         if (i=="-"):
             flash(0.4,0.1)
         if (i=="/"):
-            utime.sleep(1)
+            utime.sleep(0.8)
         if (i==" "):
             utime.sleep(0.4)
             
 def strToMorse(msg):
     morse=""
     for i in msg.lower():
-        morse+=morseCode[i]
+        morse+=morseCode[i]+" "
     return(morse)
 
 msg="hello world"
